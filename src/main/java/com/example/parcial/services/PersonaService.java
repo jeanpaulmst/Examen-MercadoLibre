@@ -1,4 +1,7 @@
 package com.example.parcial.services;
 
-public interface PersonaService extends BaseService{
+import com.example.parcial.entities.Persona;
+import com.example.inicial1.services.BaseService;
+
+public interface PersonaService extends BaseService<Persona, Long> {
 }
