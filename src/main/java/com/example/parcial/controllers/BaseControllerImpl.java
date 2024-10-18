@@ -4,16 +4,19 @@ import java.io.Serializable;
 import com.example.inicial1.entities.Base;
 import com.example.inicial1.controllers.BaseController;
 import com.example.parcial.entities.Persona;
+import com.example.parcial.services.BaseServiceImpl;
 import com.example.parcial.services.PersonaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-public class BaseControllerImpl<E extends Base, ID extends Serializable> implements BaseController<E, ID> {
+public class BaseControllerImpl<E extends Base, S extends BaseServiceImpl<E, Long>> implements BaseController<E, Long> {
 
-    protected PersonaService service;
+    @Autowired
+    protected S service;
 
     @Override
     public ResponseEntity<?> getAll() {
@@ -21,7 +24,7 @@ public class BaseControllerImpl<E extends Base, ID extends Serializable> impleme
     }
 
     @Override
-    public ResponseEntity<?> getOne(ID id) {
+    public ResponseEntity<?> getOne(Long id) {
         return null;
     }
 
@@ -32,14 +35,15 @@ public class BaseControllerImpl<E extends Base, ID extends Serializable> impleme
     }
 
     @Override
-    public ResponseEntity<?> update(ID id, E entity) {
+    public ResponseEntity<?> update(Long id, E entity) {
         return null;
     }
 
     @Override
-    public ResponseEntity<?> delete(ID id) {
+    public ResponseEntity<?> delete(Long id) {
         return null;
     }
+
 
 
 }

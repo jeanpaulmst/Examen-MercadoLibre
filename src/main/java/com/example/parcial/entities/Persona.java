@@ -12,9 +12,13 @@ import java.util.List;
 @Setter
 @Getter
 @Builder
+@Table(name = "Persona")
 public class Persona extends Base {
 
     @Column(name = "dna")
     private List<String> dna;
+
+    @Column(name = "isMutant")
+    private boolean mutant;
 
 }

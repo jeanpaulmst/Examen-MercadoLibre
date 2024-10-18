@@ -5,12 +5,13 @@ import com.example.parcial.repositories.BaseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
+import com.example.inicial1.entities.Base;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public class BaseServiceImpl<E extends com.example.inicial1.entities.Base, ID extends Serializable> implements BaseService<E, ID> {
+public class BaseServiceImpl<E extends Base, ID extends Serializable> implements BaseService<E, ID> {
 
     protected BaseRepository<E, ID> baseRepository;
 

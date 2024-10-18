@@ -9,26 +9,47 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.example.parcial.DTOs.DTOPersona;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/persona")
 public class PersonaController extends BaseControllerImpl<Persona, PersonaServiceImpl>{
 
-    PersonaServiceImpl personaService;
-
     //metodo que recibe un json de Persona y devuelve si es o no mutante
     @PostMapping("/mutant")
-    public ResponseEntity<?> analizePerson(@RequestBody Persona persona) {
+    public ResponseEntity<?> analizePerson(@RequestBody DTOPersona dtoPersona) {
+
+        List<String> dna_person = dtoPersona.getDna();
+        Persona persona = Persona.builder()
+                .dna(dna_person)
+                .build();
+
         try {
-            boolean is_mutant = Funcion.isMutant(persona.getDna());
+            boolean is_mutant = service.isMutant(persona.getDna());
             if(is_mutant){
-                return ResponseEntity.status(HttpStatus.OK).body(null);
+                service.save(persona);
+                dtoPersona.setMutant(true);
+                return ResponseEntity.status(HttpStatus.OK).body(dtoPersona);
             }else{
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
             }
 
         } catch(Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @GetMapping("/stats")
+    public ResponseEntity<?> statistics() {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(service.getStatistics());
+
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
