@@ -17,7 +17,7 @@ is iterate every row but iterate the columns in steps of two. Ths decreases our 
 This graphs try to explain this process:
 ![horizontal_search.png](./imgs/horizontal_search.png)
 
-The same when we look for the patter vertically...
+The same when we look for the pattern vertically...
 ![vertical_search.png](./imgs/vertical_search.png)
 
 And it would be the same when we look for patterns diagonally
