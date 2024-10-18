@@ -35,115 +35,72 @@ public class Funcion {
         }
     }
 
-    // devuelve si 
+
+    //Guarda los caracteres distintos encontrados
+    private static final HashSet<Character> distintosEncontrados = new HashSet<>();
+
+    //si encuentra una coincidencia de dos elementos guarda 4 elementos acá
+    private static final List<Character> fourLetters = new ArrayList<>(); // no se repiten
+
+    public static void analizarPatron(char first, char second, char third, char forth) {
+        boolean found = false;
+
+        fourLetters.add(first);
+        fourLetters.add(second);
+        fourLetters.add(third);
+        fourLetters.add(forth);
+        System.out.println("fourLetters: " + fourLetters.toString());
+
+        //se analiza si los 4 son iguales
+        found = areEqual(fourLetters);
+        fourLetters.clear();
+        if (found) {
+            distintosEncontrados.add(first);
+        }
+    }
+
     public static boolean isMutant(List<String> dna){
+
+        char[][] newDna = convertToMatrix(dna);
 
         //==== MANEJO DE ERRORES ====//
         //Si la matriz está vacía
         if(dna.isEmpty()){throw new RuntimeException("Error: Lista vacía");}
-        //Si la matriz tiene valores null
-
         //Si la matriz no es cuadrada
         if(dna.get(0).length() != dna.size()){throw new RuntimeException("Error: La matriz debe ser cuadrada");}
         //============================//
 
-        char[][] newDna = convertToMatrix(dna);
-
         int N = newDna.length-1;    //ultimo elemento en fila y columna
-
-        //Guarda los caracteres distintos encontrados
-        HashSet<Character> distintosEncontrados = new HashSet<>();
-
-        //si encuentra una coincidencia de dos elementos guarda 4 elementos acá
-        List<Character> fourLetters = new ArrayList<>(); // no se repiten
 
         //Itera la matriz
         for(int i = 0; i <= N; i++){
             for(int j = 0; j <= N; j+=2){
-
-                boolean found = false;  //se pone en true si los 4 caracteres son iguales
 
                 if(j <= N-3) {       //para que no acceda fuera de la matriz
 
                     //verificar por horizontal
                     if (newDna[i][j] == newDna[i][j + 2]) {
                         try {                                        //accede desde izquierda
-                            char primerElemento = newDna[i][j - 1];
-                            fourLetters.add(primerElemento);
-                            fourLetters.add(newDna[i][j]);
-                            fourLetters.add(newDna[i][j + 1]);
-                            fourLetters.add(newDna[i][j + 2]);
-                            System.out.println("fourLetters: " + fourLetters.toString());
+                            analizarPatron(newDna[i][j - 1], newDna[i][j], newDna[i][j + 1], newDna[i][j + 2]);
 
-                            //se analiza si los 4 son iguales
-                            found = areEqual(fourLetters);
-                            fourLetters.clear();
-                            if (found) {
-                                distintosEncontrados.add(primerElemento);
-                            }
-
-                        } catch (ArrayIndexOutOfBoundsException e) {  //accede desde derecha
-                            //no hace nada, sigue al finally
-                        } finally {
+                        } catch (ArrayIndexOutOfBoundsException ignored) {}
+                        finally {
                             try {
-                                char ultimoElemento = newDna[i][j + 3];
-                                fourLetters.add(newDna[i][j]);
-                                fourLetters.add(newDna[i][j + 1]);
-                                fourLetters.add(newDna[i][j + 2]);
-                                fourLetters.add(ultimoElemento);
-                                System.out.println("fourLetters: " + fourLetters.toString());
-
-                                //se analiza si los 4 son iguales
-                                found = areEqual(fourLetters);
-                                fourLetters.clear();
-                                if (found) {
-                                    distintosEncontrados.add(ultimoElemento);
-                                }
-
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                //no hace nada, sigue ejecución normal
-                            }
+                                analizarPatron(newDna[i][j], newDna[i][j+1], newDna[i][j+2], newDna[i][j+3]);
+                            } catch (ArrayIndexOutOfBoundsException ignored) {}
                         }
                     }
 
                     //verificar por vertical
                     if (newDna[j][i] == newDna[j + 2][i]) {
                         try {                                        //accede desde arriba
-                            char primerElemento = newDna[j - 1][i];
-                            fourLetters.add(primerElemento);
-                            fourLetters.add(newDna[j][i]);
-                            fourLetters.add(newDna[j + 1][i]);
-                            fourLetters.add(newDna[j + 2][i]);
-                            System.out.println("fourLetters: " + fourLetters.toString());
-
-                            //se analiza si los 4 son iguales
-                            found = areEqual(fourLetters);
-                            fourLetters.clear();
-                            if (found) {
-                                distintosEncontrados.add(primerElemento);
-                            }
-
-                        } catch (ArrayIndexOutOfBoundsException e) {  //accede desde abajo
-                            //no hace nada, sigue al finally
-                        } finally {
+                            analizarPatron(newDna[j-1][i], newDna[j][i], newDna[j+1][i], newDna[j+2][i]);
+                        } catch (ArrayIndexOutOfBoundsException ignored) {}
+                        finally {
                             try {
-                                char ultimoElemento = newDna[j + 3][i];
-                                fourLetters.add(newDna[j][i]);
-                                fourLetters.add(newDna[j + 1][i]);
-                                fourLetters.add(newDna[j + 2][i]);
-                                fourLetters.add(ultimoElemento);
-                                System.out.println("fourLetters: " + fourLetters.toString());
 
-                                //se analiza si los 4 son iguales
-                                found = areEqual(fourLetters);
-                                fourLetters.clear();
-                                if (found) {
-                                    distintosEncontrados.add(ultimoElemento);
-                                }
-
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                //no hace nada, sigue ejecución normal
-                            }
+                                analizarPatron(newDna[j][i], newDna[j+1][i], newDna[j+2][i], newDna[j+3][i]);
+                            } catch (ArrayIndexOutOfBoundsException ignored) {}
                         }
                     }
                 }
@@ -152,93 +109,43 @@ public class Funcion {
                 if(i <= N-3 && j <= N-3) { //diagonal izq derecha
                     if(newDna[i][j] == newDna[i+2][j+2]){
                         try {                                        //accede desde izquierda
-                            char primerElemento = newDna[i - 1][j - 1];
-                            fourLetters.add(primerElemento);
-                            fourLetters.add(newDna[i][j]);
-                            fourLetters.add(newDna[i + 1][j + 1]);
-                            fourLetters.add(newDna[i + 2][j + 2]);
-                            System.out.println("fourLetters: " + fourLetters.toString());
-
-                            //se analiza si los 4 son iguales
-                            found = areEqual(fourLetters);
-                            fourLetters.clear();
-                            if (found) {
-                                distintosEncontrados.add(primerElemento);
-                            }
-
-                        } catch (ArrayIndexOutOfBoundsException e) {  //accede desde derecha
-                            //no hace nada, sigue al finally
-                        } finally {
+                            analizarPatron(newDna[i-1][j-1], newDna[i][j], newDna[i+1][j+1], newDna[i+2][j+2]);
+                        } catch (ArrayIndexOutOfBoundsException ignored) {}
+                        finally {
                             try {
-                                char ultimoElemento = newDna[i][j + 3];
-                                fourLetters.add(newDna[i][j]);
-                                fourLetters.add(newDna[i + 1][j + 1]);
-                                fourLetters.add(newDna[i + 2][j + 2]);
-                                fourLetters.add(ultimoElemento);
-                                System.out.println("fourLetters: " + fourLetters.toString());
-
-                                //se analiza si los 4 son iguales
-                                found = areEqual(fourLetters);
-                                fourLetters.clear();
-                                if (found) {
-                                    distintosEncontrados.add(ultimoElemento);
-                                }
-
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                //no hace nada, sigue ejecución normal
-                            }
+                                analizarPatron(newDna[i][j], newDna[i+1][j+1], newDna[i+2][j+2], newDna[i+3][j+3]);
+                            } catch (ArrayIndexOutOfBoundsException ignored) {}
                         }
                     }
                 }
                 if(i <= N-3 && j >=3) { //diagonal derecha izq
                     if (newDna[i][j] == newDna[i + 2][j - 2]) {
                         try {                                        //accede desde izquierda
-                            char primerElemento = newDna[i - 1][j + 1];
-                            fourLetters.add(primerElemento);
-                            fourLetters.add(newDna[i][j]);
-                            fourLetters.add(newDna[i + 1][j - 1]);
-                            fourLetters.add(newDna[i + 2][j - 2]);
-                            System.out.println("fourLetters: " + fourLetters.toString());
+                            analizarPatron(newDna[i-1][j+1], newDna[i][j], newDna[i+1][j-1], newDna[i+2][j-2]);
 
-                            //se analiza si los 4 son iguales
-                            found = areEqual(fourLetters);
-                            fourLetters.clear();
-                            if (found) {
-                                distintosEncontrados.add(primerElemento);
-                            }
-
-                        } catch (ArrayIndexOutOfBoundsException e) {  //accede desde derecha
-                            //no hace nada, sigue al finally
-                        } finally {
+                        } catch (ArrayIndexOutOfBoundsException ignored) {}
+                        finally {
                             try {
-                                char ultimoElemento = newDna[i + 3][j - 3];
-                                fourLetters.add(newDna[i][j]);
-                                fourLetters.add(newDna[i + 1][j - 1]);
-                                fourLetters.add(newDna[i + 2][j - 2]);
-                                fourLetters.add(ultimoElemento);
-                                System.out.println("fourLetters: " + fourLetters.toString());
-
-                                //se analiza si los 4 son iguales
-                                found = areEqual(fourLetters);
-                                fourLetters.clear();
-                                if (found) {
-                                    distintosEncontrados.add(ultimoElemento);
-                                }
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                //no hace nada, sigue ejecución normal
-                            }
+                                analizarPatron(newDna[i][j], newDna[i+1][j-1], newDna[i+2][j-2], newDna[i+3][j-3]);
+                            } catch (ArrayIndexOutOfBoundsException ignored) {}
                         }
                     }
                 }
+
                 //verificar si ya existe más de un elemento distinto encontrado
                 if(distintosEncontrados.size() > 1){
                     System.out.println("Elementos distintos encontrados: " + distintosEncontrados.size());
+                    for(char elem : distintosEncontrados){
+                        System.out.println(elem);
+                    }
                     System.out.println("True");
+                    distintosEncontrados.clear();
                     return true;
                 }
             }
         }
         System.out.println("False");
+        distintosEncontrados.clear();
         return false;
     }
 }
