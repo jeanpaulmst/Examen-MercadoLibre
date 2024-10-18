@@ -1,4 +1,4 @@
-# **MercadoLibre Exercise - Backend**
+# **MercadoLibre Exercise - Backend (EN)**
 
 ## Description
 This is an tecnical interview exercise that is usually asked in MercadoLibre for the position of backend developer.
@@ -28,5 +28,38 @@ This project uses the following dependencies and technologies:
 - **H2 Database**: In-memory database for development and testing. 
 - **JUnit Platform Launcher**: To run unit tests with JUnit.
 - **Spring Boot Starter Test**: Tools and libraries required for unit testing in the project.
+
+---
+
+# **Ejercicio MercadoLibre - Backend (ES)**
+
+## Descripción
+Este es un ejercicio técnico de entrevista que suele ser solicitado en MercadoLibre para el puesto de desarrollador backend. 
+En mi caso, lo programé para la materia "Desarrollo de Software" en la universidad.
+
+En este repositorio encontrarás mi solución, la cual intentaré explicar con algunos gráficos simples y comentarios.
+
+En el documento `code_explanation.md` encontrarás una breve explicación del enunciado del problema y la solución que implementé.
+
+## Pre-requisitos
+
+- JDK (17)
+- IntelliJ IDEA (o cualquier IDE de tu preferencia)
+- Gradle (Gestor de Dependencias)
+- H2 (Base de Datos)
+
+## Dependencias
+
+### Tecnologías Utilizadas
+
+Este proyecto utiliza las siguientes dependencias y tecnologías:
+
+- Spring Boot Starter Data JPA: Para interactuar con bases de datos usando JPA.
+- Spring Boot Starter Web: Para crear APIs RESTful y manejar solicitudes web.
+- Lombok: Para reducir código repetitivo como getters, setters y constructores.
+- Spring Boot DevTools: Para acelerar el desarrollo habilitando la recarga automática de la aplicación.
+- H2 Database: Base de datos en memoria para desarrollo y pruebas.
+- JUnit Platform Launcher: Para ejecutar pruebas unitarias con JUnit.
+- Spring Boot Starter Test: Herramientas y librerías necesarias para realizar pruebas unitarias en el proyecto.
 
   
