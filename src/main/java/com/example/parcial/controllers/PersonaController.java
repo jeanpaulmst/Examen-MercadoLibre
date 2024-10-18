@@ -30,13 +30,17 @@ public class PersonaController extends BaseControllerImpl<Persona, PersonaServic
                 .build();
 
         try {
-            boolean is_mutant = service.isMutant(persona.getDna());
+            boolean is_mutant = service.isMutant(dtoPersona.getDna());
             if(is_mutant){
+                persona.setMutant(true);
                 service.save(persona);
                 dtoPersona.setMutant(true);
                 return ResponseEntity.status(HttpStatus.OK).body(dtoPersona);
             }else{
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+                persona.setMutant(false);
+                service.save(persona);
+                dtoPersona.setMutant(false);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(dtoPersona);
             }
 
         } catch(Exception e) {

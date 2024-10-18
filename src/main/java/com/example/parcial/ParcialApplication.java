@@ -33,8 +33,7 @@ public class ParcialApplication {
 	CommandLineRunner init(PersonaRepository personaRepository) {
 		return args -> {
 
-
-
+			/*
 			List<String> dna_example = Arrays.asList("ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG");
 			List<String> dna_example2 = Arrays.asList(
 					"AAAAAAAAAA",
@@ -72,7 +71,7 @@ public class ParcialApplication {
 			personaRepository.save(persona2);
 			personaRepository.save(persona3);
 			personaRepository.save(persona4);
-
+			*/
 		};
 
 	};
