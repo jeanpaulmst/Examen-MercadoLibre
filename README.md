@@ -29,7 +29,7 @@ This project uses the following dependencies and technologies:
 - **JUnit Platform Launcher**: To run unit tests with JUnit.
 - **Spring Boot Starter Test**: Tools and libraries required for unit testing in the project.
 
-### How to run?
+## How to run?
 1. Download the project
 2. Download the necessary dependencies to run the project
 3. Run the project
@@ -68,7 +68,7 @@ Este proyecto utiliza las siguientes dependencias y tecnologías:
 - JUnit Platform Launcher: Para ejecutar pruebas unitarias con JUnit.
 - Spring Boot Starter Test: Herramientas y librerías necesarias para realizar pruebas unitarias en el proyecto.
 
-### ¿Como ejecutar?
+## ¿Como ejecutar?
 
 1. Descargar el proyecto
 2. Descargar las dependencias necesarias para correr el proyecto
