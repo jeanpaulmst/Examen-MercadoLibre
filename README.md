@@ -33,8 +33,11 @@ This project uses the following dependencies and technologies:
 1. Download the project
 2. Download the necessary dependencies to run the project
 3. Run the project
-4. Start the H2 Database
-5. Test the requests
+4. Start the H2 Database, navegating to: http://localhost:8080/h2-console/
+5. You can test the API locally or using render
+    *   Locally, with the URL: http://localhost:8080/swagger-ui/index.html
+    *   On render, with the URL: https://examen-mercadolibre.onrender.com
+7. Try the API with Postman or any other software of your preference
 ---
 
 # **Ejercicio MercadoLibre - Backend (ES)**
@@ -73,6 +76,9 @@ Este proyecto utiliza las siguientes dependencias y tecnologías:
 1. Descargar el proyecto
 2. Descargar las dependencias necesarias para correr el proyecto
 3. Ejecutar el proyecto
-4. Levantar Base de Datos H2
-5. Probar las request
+4. Levantar la base de datos H2, navegando a: http://localhost:8080/h2-console/
+5. You can test the API locally or using render
+    *   Localmente, con la URL: http://localhost:8080/swagger-ui/index.html
+    *   En render, con la URL: https://examen-mercadolibre.onrender.com
+7. Probá la API con Postman o cualquier otro software de tu preferencia
   
