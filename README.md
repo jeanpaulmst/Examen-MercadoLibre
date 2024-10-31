@@ -1,7 +1,7 @@
 # **MercadoLibre Exercise - Backend (EN)**
 
 ## Description
-This is an tecnical interview exercise that is usually asked in MercadoLibre for the position of backend developer.
+This is an technical interview exercise that is usually asked in MercadoLibre for the position of backend developer.
 In mi case, I coded it for the subject "Software Development" in university.
 
 In this repo you´ll find my solution that I´ll try to explain it with some simple graphics and comments.
@@ -29,6 +29,12 @@ This project uses the following dependencies and technologies:
 - **JUnit Platform Launcher**: To run unit tests with JUnit.
 - **Spring Boot Starter Test**: Tools and libraries required for unit testing in the project.
 
+### How to run?
+1. Download the project
+2. Download the necessary dependencies to run the project
+3. Run the project
+4. Start the H2 Database
+5. Test the requests
 ---
 
 # **Ejercicio MercadoLibre - Backend (ES)**
@@ -62,4 +68,11 @@ Este proyecto utiliza las siguientes dependencias y tecnologías:
 - JUnit Platform Launcher: Para ejecutar pruebas unitarias con JUnit.
 - Spring Boot Starter Test: Herramientas y librerías necesarias para realizar pruebas unitarias en el proyecto.
 
+### ¿Como ejecutar?
+
+1. Descargar el proyecto
+2. Descargar las dependencias necesarias para correr el proyecto
+3. Ejecutar el proyecto
+4. Levantar Base de Datos H2
+5. Probar las request
   
