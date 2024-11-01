@@ -38,6 +38,9 @@ This project uses the following dependencies and technologies:
     *   Locally, with the URL: http://localhost:8080/swagger-ui/index.html
     *   On render, with the URL: https://examen-mercadolibre.onrender.com
 7. Try the API with Postman or any other software of your preference
+   *   POST (post a person local) http://localhost:8080/persona/mutant
+   *   POST (post a person render) https://examen-mercadolibre.onrender.com/persona/mutant
+   *   GET (get statistics) http://localhost:8080/persona/stats
 ---
 
 # **Ejercicio MercadoLibre - Backend (ES)**
@@ -81,4 +84,7 @@ Este proyecto utiliza las siguientes dependencias y tecnologías:
     *   Localmente, con la URL: http://localhost:8080/swagger-ui/index.html
     *   En render, con la URL: https://examen-mercadolibre.onrender.com
 7. Probá la API con Postman o cualquier otro software de tu preferencia
+   *   POST (guardar persona local) http://localhost:8080/persona/mutant
+   *   POST (guardar persona render) https://examen-mercadolibre.onrender.com/persona/mutant
+   *   GET (recuperar estadisticas) http://localhost:8080/persona/stats
   
