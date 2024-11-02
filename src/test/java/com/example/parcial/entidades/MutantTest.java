@@ -1,20 +1,22 @@
 package com.example.parcial.entidades;
-import com.example.parcial.Funcion;
-import com.example.parcial.entities.Persona;
-import com.example.parcial.services.BaseServiceImpl;
+import com.example.parcial.repositories.PersonaRepository;
 import com.example.parcial.services.PersonaServiceImpl;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MutantTest {
 
     @Autowired
@@ -56,39 +58,56 @@ public class MutantTest {
     }
 
     @Test
+    @Order(1)
     public void test1() {
         System.out.println("dna_1");
         assertTrue(personaService.isMutant(dna_1));
     }
     @Test
+    @Order(2)
     public void test2() {
         System.out.println("dna_2");
         assertFalse(personaService.isMutant(dna_2));
     }
     @Test
+    @Order(3)
     public void test3() {
         System.out.println("dna_3");
         assertTrue(personaService.isMutant(dna_3));
     }
     @Test
+    @Order(4)
     public void test4() {
         System.out.println("dna_4");
         assertFalse(personaService.isMutant(dna_4));
     }
     @Test
+    @Order(5)
     public void test5() {
         System.out.println("dna_5");
         assertFalse(personaService.isMutant(dna_5));
     }
     @Test
+    @Order(6)
     public void test6() {
         System.out.println("dna_6");
         assertTrue(personaService.isMutant(dna_6));
     }
     @Test
+    @Order(7)
     public void test7() {
         System.out.println("dna_7");
         assertTrue(personaService.isMutant(dna_7));
+    }
+    @Test
+    @Order(8)
+    public void testStats() {
+        System.out.println("TEST_STATISTICS");
+
+        HashMap<String, Serializable> stats = personaService.getStatistics();
+
+        assertEquals(4, stats.get("cantMutantes"), "Deberían haber 4 mutantes");
+        assertEquals(3, stats.get("cantHumanos"), "Deberían haber 3 humanos");
     }
 
     @AfterEach

@@ -62,7 +62,6 @@ public class PersonaServiceImpl extends BaseServiceImpl<Persona, Long> implement
         fourLetters.add(second);
         fourLetters.add(third);
         fourLetters.add(forth);
-        System.out.println("fourLetters: " + fourLetters.toString());
 
         //se analiza si los 4 son iguales
         found = areEqual(fourLetters);
@@ -72,7 +71,7 @@ public class PersonaServiceImpl extends BaseServiceImpl<Persona, Long> implement
         }
     }
 
-    public static boolean isMutant(List<String> dna){
+    public boolean isMutant(List<String> dna){
 
         char[][] newDna = convertToMatrix(dna);
 
@@ -147,18 +146,28 @@ public class PersonaServiceImpl extends BaseServiceImpl<Persona, Long> implement
 
                 //verificar si ya existe más de un elemento distinto encontrado
                 if(distintosEncontrados.size() > 1){
-                    System.out.println("Elementos distintos encontrados: " + distintosEncontrados.size());
-                    for(char elem : distintosEncontrados){
-                        System.out.println(elem);
-                    }
                     System.out.println("True");
                     distintosEncontrados.clear();
+
+                    //crear la persona y guardarla en la bd
+                    Persona persona = Persona.builder()
+                            .dna(dna)
+                            .mutant(true)
+                            .build();
+                    repository.save(persona);
                     return true;
                 }
             }
         }
         System.out.println("False");
         distintosEncontrados.clear();
+
+        //crear la persona y guardarla en la bd
+        Persona persona = Persona.builder()
+                .dna(dna)
+                .mutant(false)
+                .build();
+        repository.save(persona);
         return false;
     }
 
