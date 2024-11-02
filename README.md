@@ -58,6 +58,11 @@ Utilizando **JUnit** se hicieron los test unitarios para probar el 80% de las in
 por la librería **Jacoco**:
 ![<code_coverage>](<imgs/code_coverage.png>)
 
+Para ejecutar los test y ver el reporte ejecutar los siguientes comandos:
+1. `gradlew test`
+2. `gradlew jacocoTestReport`
+3. Dirigirse al archivo `build/reports/jacoco/test/html/index.html` y abrirlo en un navegador
+
 ## Pruebas de estrés con JMeter
 
 ### servicio `/persona/mutant`
