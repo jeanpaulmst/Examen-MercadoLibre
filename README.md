@@ -62,7 +62,7 @@ por la librería **Jacoco**:
 
 ### servicio `/persona/mutant`
 Corriendo el proyecto localmente:
-![<jmeter_mutants>](<imgs/jmeter_mutants.png>)
+![<jmeter_mutants>](<imgs/jmeter_mutant.png>)
 
 ### servicio `/persona/mutant`
 Corriendo el proyecto localmente:
