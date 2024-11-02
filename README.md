@@ -50,13 +50,25 @@ Este proyecto utiliza las siguientes dependencias y tecnologías:
 
 Si se ejecuta correctamente deberia imprimir `funcionando` en consola
 
-##Code Coverage
+
+
+## Code Coverage
 
 Utilizando **JUnit** se hicieron los test unitarios para probar el 80% de las instrucciones totales del proyecto, lo que se puede ver a continuación, en el gráfico generado
 por la librería **Jacoco**:
 ![<code_coverage>](<imgs/code_coverage.png>)
 
-##Pruebas de estrés con JMeter
+## Pruebas de estrés con JMeter
+
+### servicio `/persona/mutant`
+Corriendo el proyecto localmente:
+![<jmeter_mutants>](<imgs/jmeter_mutants.png>)
+
+### servicio `/persona/mutant`
+Corriendo el proyecto localmente:
+![<jmeter_stats>](<imgs/jmeter_stats.png>)
+
+Cada una de las pruebas fue realizada con 10000 peticiones hechas al mismo tiempo
 
 ---
 # **MercadoLibre Exercise - Backend (EN)**
