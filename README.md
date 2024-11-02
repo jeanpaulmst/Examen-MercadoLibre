@@ -1,5 +1,7 @@
 # **Ejercicio MercadoLibre - Backend (ES)**
 
+![<Meli_logo>](<imgs/Meli_logo.png>)
+
 ## Descripción
 Este es un ejercicio técnico de entrevista que suele ser solicitado en MercadoLibre para el puesto de desarrollador backend. 
 En mi caso, lo programé para la materia "Desarrollo de Software" en la universidad.
